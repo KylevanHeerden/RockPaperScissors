@@ -8,5 +8,103 @@
 </head>
 
 <Body>
-    <script src="script.js"></script>
+    <!--<script src="script.js"></script>-->
+    <script>
+    function computerPlay(){
+        let options = ["Rock", "Paper", "Scissors"];
+        let choice = options[Math.floor(Math.random() * (options.length)) * 1];
+    
+        return choice;
+    }
+    
+    let computerpoints = 0;
+    let playerpoints = 0;
+
+    let computerSelection = computerPlay().toLocaleLowerCase();
+    
+
+    //let playerSelection = prompt("Choose").toLocaleLowerCase();
+    
+    function playRound(playerSelection, computerSelection){
+        
+        if(playerSelection == "rock" && computerSelection == "paper"){
+            computerpoints = computerpoints + 1; 
+            return(`Computer Points: ${computerpoints} vs Player Points: ${playerpoints}`);
+        }
+        else if(playerSelection == "scissors" && computerSelection == "paper"){
+            playerpoints = playerpoints+ 1; 
+            return(`Computer Points: ${computerpoints} vs Player Points: ${playerpoints}`);
+        }
+        else if(playerSelection == "scissors" && computerSelection == "rock"){
+            computerpoints = computerpoints + 1; 
+            return(`Computer Points: ${computerpoints} vs Player Points: ${playerpoints}`);
+        }
+        else if(playerSelection == "paper" && computerSelection == "rock"){
+            playerpoints = playerpoints + 1; 
+            return(`Computer Points: ${computerpoints} vs Player Points: ${playerpoints}`);
+        }
+        else if(playerSelection == "paper" && computerSelection == "scissors"){
+            computerpoints = computerpoints + 1; 
+            return(`Computer Points: ${computerpoints} vs Player Points: ${playerpoints}`);
+        }
+        else if(playerSelection == "rock" && computerSelection == "scissors"){
+            playerpoints = playerpoints + 1; 
+            return(`Computer Points: ${computerpoints} vs Player Points: ${playerpoints}`);
+        }
+        else if(playerSelection == computerSelection){
+            return(`Computer Points: ${computerpoints} vs Player Points: ${playerpoints}`);
+        }
+
+        
+    }
+
+    function game() {
+
+            alert("Welcome, Lets play Rock, Paper Scissor!");
+
+            let rounds = prompt("How many rounds do you want to play?");
+
+            let playerSelection = prompt("Rock, Paper or Scissors?").toLocaleLowerCase();
+
+            if(isNaN(rounds) &&  rounds > 5){
+                alert("I dont have all day, ....... let's choose 5");
+                rounds = 5
+            }
+            else if(rounds == null){
+                alert("See.")
+                alert("You.")
+                alert("Later.")
+            }
+             else{
+                alert("May the odds be in your favor.")
+            }
+
+            result = playRound(playerSelection, computerSelection);
+
+            return result;
+
+            //alert(result)
+
+            for (i = 0; i < rounds; i++){
+                                let Game = playRound ();                
+                                    console.log(Game);
+                                     alert(Game);
+                                         if (Game[0] == "W"){
+                                             won = won + 1;
+                                         }else if(Game[0] == "L"){
+                                             lost = lost + 1;
+                                         }else if(Game[0] == "D"){
+                                             draw = draw + 1
+                                         }else{
+                                             alert("Bad Programming")
+                                     }
+
+            let output = `You have won ${won} times, lost ${lost} times, and had a draw ${draw} times.`;
+           // console.log(output);
+            alert(output);
+        }
+    }
+
+    game();
+    </script>
 </Body>

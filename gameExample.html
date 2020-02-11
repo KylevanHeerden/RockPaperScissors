@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+
+    let question = prompt("Game?").toLowerCase();
+    var numberOfGames;
+
+    let humanPoints = 0;
+    let computerPoints = 0;
+    
+    if (question === 'yes') {
+        gameStart()
+    } else if (question === 'no') {
+        alert("Ok, Bye");
+    }
+
+    function actualGame(num) {
+        for (let i = 0; i < num; i++) {
+            game();
+            alert(`Human: ${humanPoints} and Computer: ${computerPoints}`);
+        }
+
+        let again= prompt("Continue? Yes or No");
+
+        if (again == 'yes') {
+            gameStart();
+        } else if (again == 'no') {
+            if (humanPoints > computerPoints) {
+                alert('Human wins the game!!!');
+            } else if (humanPoints < computerPoints) {
+                alert('Computer won the game!!!');
+            } else if (humanPoints == computerPoints) {
+                alert('It\'s a tie folks!!!');
+            }
+        }
+    }
+
+    function gameStart() {
+        let numberOfGames = prompt("How many rounds?");
+        actualGame(numberOfGames);
+    }
+
+
+
+    function playRound(playerSelection, computerSelection) {
+        if (playerSelection == 'rock' && computerSelection == 'paper'){
+            computerPoints++;
+            alert(`Human:${playerSelection} vs Computer:${computerSelection} -- Computer Wins`);
+        } else if (playerSelection == 'paper' && computerSelection == 'rock') {
+            humanPoints++;
+            alert(`Human:${playerSelection} vs Computer:${computerSelection} -- Human wins`);
+        } else if (playerSelection == 'scissors' && computerSelection == 'paper') {
+            humanPoints++;
+            alert(`Human:${playerSelection} vs Computer:${computerSelection} -- Human wins`);
+        } else if (playerSelection == 'paper' && computerSelection == 'scissors') {
+            computerPoints++;
+            alert(`Human:${playerSelection} vs Computer:${computerSelection} -- Computer Wins`);
+        } else if (playerSelection == 'rock' && computerSelection == 'scissors') {
+            humanPoints++;
+            alert(`Human:${playerSelection} vs Computer:${computerSelection} -- Human wins`);
+        } else if (playerSelection == 'scissors' && computerSelection == 'rock') {
+            computerPoints++;
+            alert(`Human:${playerSelection} vs Computer:${computerSelection} -- Computer Wins`);
+        } else if (playerSelection == computerSelection) {
+            alert(`Human:${playerSelection} vs Computer:${computerSelection} -- Tie`);
+        }
+    }
+
+    function computerPlay() {
+        let options = ["rock","paper","scissors"];
+        let choice = options[Math.floor(Math.random() * (options.length)) * 1];
+
+        return choice;
+    }
+
+    function game() {
+        let playerSelection = prompt("Rock, Paper or Scissors?").toLowerCase();
+
+        const computerSelection = computerPlay();
+
+        const result = playRound(playerSelection, computerSelection);
+
+        return result;
+    }
+</script>
+<body>
+    
+</body>
+</html>
