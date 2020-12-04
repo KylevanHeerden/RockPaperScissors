@@ -2,4 +2,4 @@
 
 Simple RockPaperScissors game running simple on js. This was a small test to test js in web. 
 
-Open in browser to play game.
+Open GameExample2.html in browser to play game.
